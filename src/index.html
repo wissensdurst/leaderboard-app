@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,600,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" type="image/png" href="" />
+
+    <title>Hattrick &mdash; Casino App</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="nav">
+        <ul class="nav__container">
+          <li class="nav__item nav__item--active">
+            <a  id="active" href="#" class="nav__link">Active<span id="activeNr" class="nav__item--games">(%)</span></a>
+            
+          </li>
+          <li class="nav__item">
+            <a id="upcoming" href="#" class="nav__link">Upcoming<span id="upcomingNr" class="nav__item--games">(%)</span></a>
+            
+          </li>
+          <li class="nav__item">
+            <a id="finished" href="#" class="nav__link">Finished<span id="finishedNr" class="nav__item--games">(%)</span></a>
+           
+          </li>
+        </ul>
+      </nav>
+
+      <div class="main">
+        <!-- <div class="game">
+          <figure class="game__cover">
+            <img src="./img/cover_1.jpg" class="game__img" alt="" />
+          </figure>
+          <div class="game__side game__name">Lucky Lady's Charm</div>
+          <div class="game__side game__end">
+            <p class="game__side--title">Tourney ends</p>
+            <p class="game__side--text">9h 50m</p>
+          </div>
+          <div class="game__side game__reg">
+            <p class="game__side--title">Registration ends</p>
+            <p class="game__side--text">9h 50m</p>
+          </div>
+          <div class="game__side game__players">
+            <p class="game__side--title">Players</p>
+            <p class="game__side--text">1450</p>
+          </div>
+          <div class="game__side game__options">
+            <button id="myBtn" class="btn btn__display">Display</button>
+            <button class="btn btn__register">Register</button>
+          </div>
+        </div>
+
+        <div class="game">
+          <figure class="game__cover">
+            <img src="./img/cover_2.jpg" class="game__img" alt="" />
+          </figure>
+          <div class="game__side game__name">Germorama</div>
+          <div class="game__side game__end">
+            <p class="game__side--title">Tourney ends</p>
+            <p class="game__side--text">9h 50m</p>
+          </div>
+          <div class="game__side game__reg">
+            <p class="game__side--title">Registration ends</p>
+            <p class="game__side--text">9h 50m</p>
+          </div>
+          <div class="game__side game__players">
+            <p class="game__side--title">Players</p>
+            <p class="game__side--text">1450</p>
+          </div>
+          <div class="game__side game__options">
+            <button id="myBtn" class="btn btn__display">Display</button>
+            <button class="btn btn__register">Register</button>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- <div id="mainModal" class="modal">
+        <div class="modal__container">
+          <figure id="modalHeader" class="modal__header">
+            <div class="modal__name">
+              <p class="modal__name-text">Lucky Lady's Charm</p>
+              <button class="btn btn__exit">Exit</button>
+              <button id="regBtn" class="btn btn__register">Register</button>
+            </div>
+          </figure>
+          <div class="modal__rankings">
+            <div class="modal__rankings--title">
+              <svg class="icon-trophy">
+                <use href="img/symbol-defs.svg#icon-trophy"></use>
+              </svg>
+              <p>Rankings</p>
+            </div>
+            <div class="modal__rankings--item">
+              <p class="modal__rankings--user-title">Username</p>
+              <p class="modal__rankings--pts-title">Points</p>
+              <p class="modal__rankings--prz-title">Prizes</p>
+            </div>
+            <div class="modal__rankings--item">
+              <p class="modal__rankings--nr">1</p>
+              <p class="modal__rankings--user">Rad***z1</p>
+              <p class="modal__rankings--pts">4230</p>
+              <p class="modal__rankings--prz">1000 Kn</p>
+            </div>
+
+            <div class="modal__rankings--item modal__rankings--focused">
+              <p class="modal__rankings--nr">1</p>
+              <p class="modal__rankings--user">Rad***z1</p>
+              <p class="modal__rankings--pts">4230</p>
+              <p class="modal__rankings--prz">1000 Kn</p>
+            </div>
+          </div>
+          <div class="modal__footer">
+            <div class="modal__rules">
+              <p class="modal__rules-title">Tourney rules</p>
+              <p class="modal__rules-text">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magni
+                fugit qui neque amet non quaerat, illo adipisci molestias
+                ratione. Aspernatur, cumque eos nihil ipsum sint aliquid,
+                consequuntur blanditiis voluptas voluptatem tenetur dolorem
+                asperiores quae quidem ex possimus! Quaerat perferendis qui
+                temporibus hic tempora optio aperiam eum. Nisi enim amet saepe
+                quia consectetur recusandae necessitatibus pariatur nihil,
+                commodi minus placeat voluptas officia. Rerum, reiciendis culpa
+                aperiam numquam cumque illo veniam. Quisquam ducimus voluptatem
+                voluptatum vitae ad. Maiores neque nostrum optio in minima quos
+                voluptatem officiis, vel iusto aut corrupti consequatur sequi
+                dicta quasi eveniet ex doloremque ratione qui beatae totam
+                inventore!
+              </p>
+            </div>
+            <div class="modal__info">
+              <div class="modal__info--players">
+                <p class="modal__info--title">Players</p>
+                <p class="modal__info--text">1450</p>
+              </div>
+              <div class="modal__info--reg">
+                <p class="modal__info--title">Registered</p>
+                <p class="modal__info--text">487</p>
+              </div>
+              <div class="modal__info--status">
+                <p class="modal__info--title">Registration</p>
+                <p class="modal__info--text">Finished</p>
+              </div>
+              <div class="modal__info--games">
+                <p class="modal__info--title">Included games</p>
+                <p class="modal__info--text">58</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="subModal" class="submitModal">
+      <div class="submitModal__container">
+        <div class="submitModal__header">
+          <p>Registration confirmation</p>
+        </div>
+        <div class="submitModal__body">
+          <p>Are you sure you want to register to this tournament?</p>
+        </div>
+        <div class="submitModal__footer">
+          <button class="btn btn__cancel">Cancel</button>
+          <button class="btn btn__register">Confirm</button>
+        </div>
+      </div>
+    </div> -->
+
+  </body>
+</html>
