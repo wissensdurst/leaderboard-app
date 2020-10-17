@@ -269,7 +269,7 @@ a {
   display: grid;
   background-color: var(--color-grey-dark);
   color: #fff;
-  margin: 10rem auto;
+  margin: 5rem auto;
   border: 1px solid #888;
   width: 80rem;
   animation-name: fadein;
