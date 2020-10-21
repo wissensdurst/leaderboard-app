@@ -1,9 +1,11 @@
 import { elements } from "./base";
 import * as modal from "../models/Modal";
-import uniqid from "uniqid";
+import * as gameView from "./gameView";
 
 export const renderModal = (game) => {
+  const position = modal.getPosition(game);
   const rankings = modal.getRankings(game);
+  const register = gameView.getRegister(game);
   const markup = `
 <div id="${game.id}" class="modal">
   <div class="modal__container">
@@ -11,16 +13,12 @@ export const renderModal = (game) => {
       <div class="modal__name">
         <p class="modal__name-text">${game.name}</p>
         <button id="exit" class="btn btn__exit">Exit</button>
-        <button id="regBtn" data-modal-id="${
-          game.id
-        }sub" class="btn btn__register">Register</button>
+        ${register}
       </div>
     </figure>
     <div class="modal__rankings">
-      <div class="modal__rankings--title">
-        <svg class="icon-trophy">
-          <use xlink:href="./img/symbol-defs.svg#icon-trophy"></use>
-        </svg>
+      <div class="modal__rankings--title"> 
+      <i class='bx bxs-trophy' ></i>   
         <p>Rankings</p>
       </div>
       <div class="modal__rankings--item">
@@ -55,8 +53,7 @@ export const renderModal = (game) => {
           <p class="modal__info--text">${game.players}</p>
         </div>
         <div class="modal__info--reg">
-          <p class="modal__info--title">Registered</p>
-          <p class="modal__info--text">487</p>
+          ${position}
         </div>
         <div class="modal__info--status">
           <p class="modal__info--title">Registration</p>
@@ -72,21 +69,17 @@ export const renderModal = (game) => {
 </div>
 </div>
 
-
-
 <div id="${game.id}sub" class="submitModal">
       <div class="submitModal__container">
         <div class="submitModal__header">
           <p>Registration confirmation</p>
         </div>
         <div class="submitModal__body">
-          <p>Are you sure you want to register to <span class="submitModal__title">${
-            game.name
-          }</span>?</p>
+          <p>Are you sure you want to register to <span class="submitModal__title">${game.name}</span>?</p>
         </div>
         <div class="submitModal__footer">
           <button id="cancel" class="btn btn__cancel">Cancel</button>
-          <button id="playerId"  value=${uniqid()} class="btn btn__register">Confirm</button>
+          <button id= ${game.id}  value=${game.status} class="btn btn__register confirm">Confirm</button>
         </div>
       </div>
     </div>

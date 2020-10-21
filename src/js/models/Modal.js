@@ -1,3 +1,4 @@
+import uniqid from "uniqid";
 const currentlyOpenModals = [];
 
 const noModalsOpen = () => !currentlyOpenModals.length;
@@ -6,7 +7,6 @@ const openModal = (modalId) => {
   const modalWrapper = document.getElementById(modalId);
   modalWrapper.classList.add("visible");
   currentlyOpenModals.push(modalWrapper);
-  // console.log(currentlyOpenModals);
 };
 
 const closeTopmostModal = () => {
@@ -26,7 +26,6 @@ document.body.addEventListener("keyup", (keyEvent) => {
 });
 
 window.onclick = function (event) {
-  // console.log(event.target);
   if (
     event.target.classList.contains("modal") ||
     event.target.classList.contains("submitModal")
@@ -46,8 +45,8 @@ function listener(event) {
     openModal(modalId);
   } else if (trigger.id === "regBtn") {
     openModal(modalId);
-  } else if (trigger.id === "playerId") {
-    alert("Your player ID is " + trigger.value);
+  } else if (trigger.classList.contains("confirm")) {
+    console.log(uniqid());
   } else if (trigger.id === "cancel") {
     closeTopmostModal();
   } else if (trigger.id === "exit") {
@@ -57,7 +56,7 @@ function listener(event) {
 
 export const getRankings = function (game) {
   let markup = [];
-  const random = Math.floor(Math.random() * 10);
+  const random = Math.floor(Math.random() * 9);
   const highlited = `<div class="modal__rankings--item modal__rankings--focused">
   <p class="modal__rankings--nr">${game.rankings[random].rank}</p>
   <p class="modal__rankings--user">noobmaster69</p>
@@ -78,6 +77,10 @@ export const getRankings = function (game) {
 
   if (game.status === "finished") {
     markup.splice(random, 1, highlited);
+
+    const registration = document.querySelector(".game__reg");
+    registration.innerHTML = `<p class="game__side--title">Your  position</p>
+    <p class="game__side--text">${game.position}</p>`;
   }
   return markup.join("");
 };
@@ -85,4 +88,14 @@ export const getRankings = function (game) {
 export const getHeader = function (game) {
   const header = document.getElementById("modalHeader");
   header.style.backgroundImage = `url(${game.img_url})`;
+};
+
+export const getPosition = function (game) {
+  if (game.status === "finished") {
+    return `<p class="modal__info--title">Position</p>
+    <p class="modal__info--text">${game.position}</p>`;
+  } else {
+    return `<p class="modal__info--title">Registered</p>
+    <p class="modal__info--text">${game.registered}</p>`;
+  }
 };

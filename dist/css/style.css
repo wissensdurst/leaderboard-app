@@ -1,13 +1,25 @@
 :root {
+  /* --color-primary: #0066cc;
+  --color-primary-dark: #004080;
+  --color-primary-light: #1a8cff;
+  --color-primary-lightest: rgb(194, 236, 255);
+  --color-grey-darkest: #0c111d;
+  --color-grey-dark: #071e49;
+  --color-grey-medium: #0e2147;
+  --color-grey-light: #3058af;
+  --color-grey-lightest: #437fff;
+  --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
+  --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.5); */
+
   --color-primary: #0066cc;
   --color-primary-dark: #004080;
   --color-primary-light: #1a8cff;
   --color-primary-lightest: rgb(194, 236, 255);
-  --color-grey-darkest: #202020;
-  --color-grey-dark: #1c2942;
-  --color-grey-medium: #27395c;
-  --color-grey-light: #808080;
-  --color-grey-lightest: #d1d1d1;
+  --color-grey-darkest: #131212;
+  --color-grey-dark: #18191c;
+  --color-grey-medium: #282a2e;
+  --color-grey-light: #3d3f44;
+  --color-grey-lightest: #6e6e6e;
   --shadow-dark: 0 2rem 6rem rgba(0, 0, 0, 0.3);
   --shadow-light: 0 2rem 5rem rgba(0, 0, 0, 0.5);
 }
@@ -44,11 +56,12 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--color-grey-light);
-  background-image: linear-gradient(
-    to left top,
-    var(--color-primary-light),
-    var(--color-primary-dark)
-  );
+  /* background-image: linear-gradient(
+    to right bottom,
+    var(--color-grey-darkest),
+    var(--color-grey-lightest)
+  ); */
+  background-color: #18191c;
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 110vh;
@@ -63,12 +76,32 @@ a {
   list-style: none;
 }
 
+.bx-check {
+  color: var(--color-primary);
+  font-size: 2.6rem;
+}
+
+.bxs-trophy {
+  margin-right: 1rem;
+  font-size: 2.6rem;
+}
+
+.container {
+  background-color: var(--color-grey-light);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.main {
+  transition: all 0.5s;
+}
+
 .game {
   width: 100%;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: var(--shadow-light);
-  margin-bottom: 10rem;
+  /* box-shadow: var(--shadow-light); */
+  margin-bottom: 3rem;
   display: grid;
   grid-row-gap: 2px;
   grid-template-rows: repeat(5, minmax(7rem, 1fr));
@@ -112,19 +145,19 @@ a {
 }
 .game__end {
   grid-area: end;
-  background-color: var(--color-grey-dark);
+  background-color: var(--color-grey-medium);
 }
 .game__reg {
   grid-area: reg;
-  background-color: var(--color-grey-dark);
+  background-color: var(--color-grey-medium);
 }
 .game__players {
   grid-area: players;
-  background-color: var(--color-grey-dark);
+  background-color: var(--color-grey-medium);
 }
 .game__options {
   grid-area: options;
-  background-color: var(--color-grey-dark);
+  background-color: var(--color-grey-medium);
   flex-direction: row;
   justify-content: space-around;
 }
@@ -146,9 +179,9 @@ a {
 
 .nav__container {
   display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   border-radius: 1rem;
-  padding: 1rem;
+  /* padding: 1rem; */
   opacity: 0.9;
   z-index: 1;
 }
@@ -190,8 +223,8 @@ a {
   border-radius: 2px;
   color: #fff;
   cursor: pointer;
-  display: inline-block;
-  vertical-align: middle;
+  /* display: inline-block; */
+  /* vertical-align: middle; */
   transition: all 0.2s;
 }
 .btn:active,
@@ -204,14 +237,29 @@ a {
   outline: none;
 }
 .btn__display {
-  background-color: var(--color-grey-light);
+  background-color: var(--color-grey-lightest);
 }
 .btn__display:hover,
 .btn__display:focus {
-  background-color: #747272;
+  background-color: #636262;
 }
 .btn__register {
   background-color: limegreen;
+}
+
+.btn__logged {
+  background-color: transparent;
+  color: #fff;
+  cursor: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: capitalize;
+}
+.btn__register.logged:hover,
+.btn__register.logged:focus {
+  background-color: #fff;
+  color: var(--color-primary);
 }
 .btn__register:hover,
 .btn__register:focus {
@@ -260,20 +308,20 @@ a {
   overflow: auto;
   background-color: black;
   background-color: rgba(0, 0, 0, 0.4);
-  transition: all 0.5s;
+  transition: all 0.3s;
 }
 .modal.visible {
   display: block;
 }
 .modal__container {
   display: grid;
-  background-color: var(--color-grey-dark);
+  background-color: var(--color-grey-medium);
   color: #fff;
   margin: 5rem auto;
   border: 1px solid #888;
   width: 80rem;
   animation-name: fadein;
-  transition: all 0.5s;
+  animation-duration: 0.3s;
   border: none;
   border-radius: 1rem;
   overflow: hidden;
@@ -297,7 +345,7 @@ a {
 }
 @media only screen and (max-width: 43.75em) {
   .modal__name {
-    justify-content: space-evenly;
+    justify-content: space-around;
   }
 }
 .modal__name-text {
@@ -306,6 +354,7 @@ a {
 }
 .modal__rankings {
   padding: 1rem;
+  /* text-align: center; */
 }
 .modal__rankings--title {
   height: 4rem;
@@ -332,6 +381,12 @@ a {
 .modal__rankings--user-title {
   grid-column: 2 / span 1;
 }
+
+.modal__rankings--nr {
+  justify-self: center;
+  margin-right: 2rem;
+}
+
 .modal__rankings--pts {
   justify-self: center;
 }
@@ -361,7 +416,7 @@ a {
   margin-bottom: 1rem;
 }
 .modal__info {
-  background-color: var(--color-grey-medium);
+  background-color: var(--color-grey-light);
   border-radius: 1rem;
   grid-column: 3 / span 1;
   display: grid;
@@ -375,7 +430,7 @@ a {
   grid-row: 1;
 }
 .modal__info--reg {
-  border-top: 1px solid var(--color-grey-light);
+  border-top: 1px solid var(--color-grey-lightest);
   grid-row: 2;
   display: flex;
   align-items: center;
@@ -383,7 +438,7 @@ a {
   flex-direction: column;
 }
 .modal__info--status {
-  border-top: 1px solid var(--color-grey-light);
+  border-top: 1px solid var(--color-grey-lightest);
   grid-row: 3;
   display: flex;
   align-items: center;
@@ -392,7 +447,7 @@ a {
   text-transform: capitalize;
 }
 .modal__info--games {
-  border-top: 1px solid var(--color-grey-light);
+  border-top: 1px solid var(--color-grey-lightest);
   grid-row: 4;
   display: flex;
   align-items: center;
@@ -471,6 +526,7 @@ a {
   width: 100%;
   height: 100%;
   box-shadow: var(--shadow-light);
+  transition: all 0.3s;
 }
 
 .submitModal.visible {
@@ -485,7 +541,7 @@ a {
   border: 1px solid #888;
   width: 40rem;
   animation-name: fadein;
-  animation-duration: 0.6s;
+  animation-duration: 0.3s;
   border: none;
   border-radius: 1rem;
   overflow: hidden;

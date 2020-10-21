@@ -37,7 +37,7 @@ newGame("81 fruit awards", "18:50");
 
 newGame("lucky lady's charm", "19:15");
 
-newGame("river queen", "20:30");
+newGame("river queen", "23:30");
 
 newGame("dolphin's pearl", "13:30");
 
@@ -55,7 +55,8 @@ data.games.active.forEach((e) => {
 });
 
 document.addEventListener("click", (event) => {
-  let status = event.target.id;
+  const status = event.target.id;
+
   if (status === "active" || status === "upcoming" || status === "finished") {
     clearList();
     clearNav(status);
@@ -65,4 +66,8 @@ document.addEventListener("click", (event) => {
       modalView.renderModal(e);
     });
   }
+});
+
+document.addEventListener("click", (event) => {
+  gameView.getRegistered(event, data);
 });

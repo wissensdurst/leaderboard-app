@@ -1,6 +1,37 @@
-import { elements } from "./base";
+import { clearList, elements } from "./base";
+import * as modalView from "./modalView";
+
+export const getRegistered = function (event, data) {
+  const btn = event.target;
+  const id = btn.id;
+  const status = btn.value;
+  if (btn.classList.contains("confirm")) {
+    data.games[status].forEach((e) => {
+      if (e.id === id && e.status !== "finished") {
+        e.reg = true;
+        e.status = "registered";
+      }
+    });
+    clearList();
+    data.games[status].forEach((e) => {
+      renderGame(e);
+      modalView.renderModal(e);
+    });
+  }
+};
+
+export const getRegister = function (game) {
+  if (game.reg) {
+    return `<button class="btn btn__logged"><i class='bx bx-check'></i>Registered</button>`;
+  } else if (game.status == "finished") {
+    return `<button class="btn btn__logged"><i class='bx bx-check'></i>Logged in</button>`;
+  } else {
+    return `<button id="regBtn" data-modal-id="${game.id}sub"  class="btn btn__register">Register</button>`;
+  }
+};
 
 export const renderGame = (game) => {
+  const regBtn = getRegister(game);
   const markup = `
 <div class="game">
   <figure class="game__cover">
@@ -21,7 +52,7 @@ export const renderGame = (game) => {
   </div>
   <div class="game__side game__options">
     <button id="myBtn" data-modal-id="${game.id}" class="modal-trigger btn btn__display">Display</button>
-    <button id="regBtn" data-modal-id="${game.id}sub"  class="btn btn__register">Register</button>
+    ${regBtn}
   </div>
 </div>
   `;

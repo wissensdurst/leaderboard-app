@@ -6,6 +6,9 @@ export default class Game {
     this.start = start;
     this.id = uniqid();
     this.players = Math.floor(Math.random() * (2000 - 1000 + 1) + 1000);
+    this.registered = Math.floor(Math.random() * (this.players - 1 + 1) + 1);
+    this.position = Math.floor(Math.random() * (this.registered - 1 + 1) + 1);
+    this.reg = false;
 
     const now = new Date().getHours() * 60 + new Date().getMinutes();
 
@@ -68,7 +71,7 @@ export default class Game {
     }
 
     let rankings = [];
-    for (let i = 0; i < 10; i++) {
+    for (let i = 0; i < 9; i++) {
       const player = {
         rank: i + 1,
         name: "Rad*****z21",
@@ -77,6 +80,12 @@ export default class Game {
       };
       rankings.push(player);
     }
+    rankings.push({
+      rank: this.players,
+      name: "Rad*****z21",
+      points: 0,
+      prize: 0,
+    });
     this.rankings = rankings;
   }
 }
